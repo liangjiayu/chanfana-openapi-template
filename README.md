@@ -70,3 +70,36 @@ Test files are located in the `tests/` directory, with examples demonstrating ho
 2. Each endpoint has its own file in `src/endpoints/`.
 3. Integration tests are located in the `tests/` directory.
 4. For more information read the [chanfana documentation](https://chanfana.com/), [Hono documentation](https://hono.dev/docs), and [Vitest documentation](https://vitest.dev/guide/).
+
+## 对话 API (DeepSeek)
+
+本项目实现了一套 DeepSeek 风格的多轮对话 API，调用 DeepSeek 对话模型（`deepseek-chat`）生成回复并持久化到 D1。
+
+### 接口
+
+| 方法 | 路径 | 说明 |
+| --- | --- | --- |
+| POST | `/conversations` | 创建对话（可选 `title`） |
+| GET | `/conversations` | 对话列表 |
+| GET | `/conversations/:id` | 对话详情（含消息历史） |
+| DELETE | `/conversations/:id` | 删除对话（级联消息） |
+| POST | `/conversations/:id/messages` | 发送消息，返回 AI 回复（核心） |
+| GET | `/conversations/:id/messages` | 消息列表 |
+
+数据库表见 `migrations/0001_init_chat.sql`：`conversations`（会话）与 `messages`（消息）。
+
+### 环境变量
+
+- `DEEPSEEK_BASE_URL`、`DEEPSEEK_MODEL`：在 `wrangler.jsonc` 的 `vars` 中配置。
+- `DEEPSEEK_API_KEY`：本地开发写在 `.dev.vars`（已被 gitignore）；生产部署用：
+  ```bash
+  npx wrangler secret put DEEPSEEK_API_KEY
+  ```
+
+### 本地运行与界面测试
+
+```bash
+npm run dev            # 启动后访问 http://localhost:8787/ 打开 Swagger UI 直接测试
+```
+
+在 Swagger UI 中先 `POST /conversations` 拿到对话 `id`，再用该 `id` 调 `POST /conversations/:id/messages` 发消息即可看到 DeepSeek 回复。

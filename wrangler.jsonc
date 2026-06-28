@@ -6,6 +6,10 @@
 	"observability": {
 		"enabled": true
 	},
+	"vars": {
+		"DEEPSEEK_BASE_URL": "https://api.deepseek.com",
+		"DEEPSEEK_MODEL": "deepseek-chat"
+	},
 	"d1_databases": [
 		{
 			"binding": "DB",
