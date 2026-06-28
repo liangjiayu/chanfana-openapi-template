@@ -3,7 +3,7 @@
 	// 默认配置文件：wrangler dev / wrangler deploy 都读它
 	"compatibility_date": "2025-10-08",
 	"main": "src/index.ts",
-	"name": "chanfana-openapi-template-dev",
+	"name": "chanfana-openapi-template",
 	"upload_source_maps": true,
 	"observability": {
 		"enabled": true
