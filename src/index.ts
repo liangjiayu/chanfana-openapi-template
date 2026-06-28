@@ -33,7 +33,7 @@ const openapi = fromHono(app, {
 	docs_url: "/",
 	schema: {
 		info: {
-			title: "对话 API (DeepSeek)123",
+			title: "对话 API (DeepSeek)123456",
 			version: "1.0.0",
 			description:
 				"DeepSeek 风格的多轮对话 API：创建对话、在对话内发消息，后端调用 DeepSeek 模型生成回复并持久化。",
