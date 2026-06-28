@@ -1,9 +1,9 @@
 {
-	// ===== 日常环境 (dev) =====
-	// 默认配置文件：wrangler dev / wrangler deploy 都读它
+	// ===== 生产环境 (prod) =====
+	// 用法：wrangler deploy -c wrangler.prod.jsonc
 	"compatibility_date": "2025-10-08",
 	"main": "src/index.ts",
-	"name": "chanfana-openapi-template-dev",
+	"name": "chanfana-openapi-template-prod",
 	"upload_source_maps": true,
 	"observability": {
 		"enabled": true
@@ -15,8 +15,8 @@
 	"d1_databases": [
 		{
 			"binding": "DB",
-			"database_name": "openapi-template-db",
-			"database_id": "c1255c89-74d2-4ff5-af06-eba1f0fe030d"
+			"database_name": "openapi-template-db-prod",
+			"database_id": "4e254628-6511-4199-a996-38cf0f8bec12"
 		}
 	]
 }
