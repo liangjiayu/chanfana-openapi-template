@@ -1,6 +1,7 @@
 {
-	// ===== 日常环境 (dev) =====
-	// 默认配置文件：wrangler dev / wrangler deploy 都读它
+	// ===== 顶层 = 默认/日常环境 (dev) =====
+	// git 自动构建的 worker: chanfana-openapi-template
+	// 部署命令: wrangler deploy
 	"compatibility_date": "2025-10-08",
 	"main": "src/index.ts",
 	"name": "chanfana-openapi-template",
@@ -18,5 +19,23 @@
 			"database_name": "openapi-template-db",
 			"database_id": "c1255c89-74d2-4ff5-af06-eba1f0fe030d"
 		}
-	]
+	],
+	// ===== 生产环境 (production) =====
+	// git 自动构建的 worker: chanfana-openapi-template-production
+	// 部署命令: wrangler deploy --env production
+	"env": {
+		"production": {
+			"vars": {
+				"DEEPSEEK_BASE_URL": "https://api.deepseek.com",
+				"DEEPSEEK_MODEL": "deepseek-chat"
+			},
+			"d1_databases": [
+				{
+					"binding": "DB",
+					"database_name": "openapi-template-db-prod",
+					"database_id": "4e254628-6511-4199-a996-38cf0f8bec12"
+				}
+			]
+		}
+	}
 }
