@@ -4,7 +4,7 @@
 	// 部署命令: wrangler deploy
 	"compatibility_date": "2025-10-08",
 	"main": "src/index.ts",
-	"name": "chanfana-openapi-template",
+	"name": "chanfana-openapi-template-prod",
 	"upload_source_maps": true,
 	"observability": {
 		"enabled": true
